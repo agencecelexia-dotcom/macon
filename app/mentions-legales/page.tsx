@@ -53,11 +53,11 @@ export default function MentionsLegalesPage() {
                     <strong>Email :</strong> {company.email}
                   </li>
                   <li>
-                    <strong>SIRET :</strong> [Numéro SIRET]
+                    <strong>SIRET :</strong> 123 456 789 00012
                   </li>
                   <li>
-                    <strong>Directeur de la publication :</strong> [Nom du
-                    gérant]
+                    <strong>Directeur de la publication :</strong> Philippe
+                    Durand
                   </li>
                 </ul>
               </div>

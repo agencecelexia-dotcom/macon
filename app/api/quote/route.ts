@@ -20,12 +20,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // TODO: Integrate with n8n webhook
-    // await fetch(process.env.N8N_WEBHOOK_URL, {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(result.data),
-    // });
+    // Données validées disponibles dans result.data
+    // Connectez votre service d'envoi ici (email, CRM, webhook...)
 
     return NextResponse.json({ success: true });
   } catch {

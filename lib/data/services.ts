@@ -55,8 +55,8 @@ export const services: Service[] = [
       { question: "Quelles garanties proposez-vous ?", answer: "Nous offrons une garantie décennale couvrant tous les dommages structurels pendant 10 ans après livraison." },
       { question: "Travaillez-vous avec des architectes ?", answer: "Oui, nous collaborons régulièrement avec des architectes et bureaux d'études pour les projets nécessitant un permis de construire." },
     ],
-    seoTitle: "Construction Neuve à [Ville] | Maçonnerie [Nom]",
-    seoDescription: "Construction de maison neuve à [Ville] et environs. Fondations, gros œuvre, murs porteurs. Artisan maçon qualifié, garantie décennale. Devis gratuit sous 48h.",
+    seoTitle: "Construction Neuve à Lyon | Maçonnerie Durand",
+    seoDescription: "Construction de maison neuve à Lyon et environs. Fondations, gros œuvre, murs porteurs. Artisan maçon qualifié, garantie décennale. Devis gratuit sous 48h.",
   },
   {
     id: "renovation-maconnerie",
@@ -83,8 +83,8 @@ export const services: Service[] = [
       { question: "Peut-on ouvrir un mur porteur ?", answer: "Oui, avec une étude structurelle préalable par un bureau d'études. Nous posons des IPN ou poutres de renfort adaptées." },
       { question: "Quel est le coût moyen d'une rénovation de façade ?", answer: "Le prix varie de 30 à 100 €/m² selon l'état de la façade, le type de traitement et la hauteur du bâtiment." },
     ],
-    seoTitle: "Rénovation Maçonnerie à [Ville] | Maçonnerie [Nom]",
-    seoDescription: "Rénovation maçonnerie à [Ville]. Ravalement façade, murs porteurs, joints, consolidation. Artisan qualifié, devis gratuit sous 48h.",
+    seoTitle: "Rénovation Maçonnerie à Lyon | Maçonnerie Durand",
+    seoDescription: "Rénovation maçonnerie à Lyon. Ravalement façade, murs porteurs, joints, consolidation. Artisan qualifié, devis gratuit sous 48h.",
   },
   {
     id: "extension-surelevation",
@@ -111,8 +111,8 @@ export const services: Service[] = [
       { question: "Peut-on surélever n'importe quelle maison ?", answer: "Non, il faut vérifier que les fondations et la structure existante peuvent supporter le poids supplémentaire. Une étude structurelle est indispensable." },
       { question: "Combien coûte une extension de maison ?", answer: "Le coût varie de 1 200 à 2 500 €/m² selon le type d'extension, les matériaux choisis et la complexité du projet." },
     ],
-    seoTitle: "Extension & Surélévation Maison à [Ville] | Maçonnerie [Nom]",
-    seoDescription: "Extension et surélévation de maison à [Ville]. Agrandissement, aménagement combles, véranda. Artisan maçon qualifié. Devis gratuit.",
+    seoTitle: "Extension & Surélévation Maison à Lyon | Maçonnerie Durand",
+    seoDescription: "Extension et surélévation de maison à Lyon. Agrandissement, aménagement combles, véranda. Artisan maçon qualifié. Devis gratuit.",
   },
 ];
 

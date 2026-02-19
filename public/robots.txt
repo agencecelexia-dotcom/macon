@@ -4,7 +4,7 @@ Allow: /
 Disallow: /api/
 
 # Host
-Host: https://www.example.com
+Host: https://www.maconnerie-durand.fr
 
 # Sitemaps
-Sitemap: https://www.example.com/sitemap.xml
+Sitemap: https://www.maconnerie-durand.fr/sitemap.xml

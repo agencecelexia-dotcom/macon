@@ -53,7 +53,7 @@ L'extension de maison coûte en moyenne :
 4. Groupez les travaux pour réduire les coûts de déplacement
 
 **Besoin d'un devis précis pour votre projet ?** [Contactez-nous](/contact) pour un devis gratuit sous 48h.`,
-    author: "Maçonnerie [Nom]",
+    author: "Maçonnerie Durand",
     date: "2026-02-01",
     category: "Prix & Tarifs",
     image: "/images/blog/prix-maconnerie.jpg",
@@ -101,7 +101,7 @@ Un artisan local connaît les spécificités du sol, le PLU de votre commune, et
 Le chantier va durer plusieurs semaines voire mois. Le courant doit bien passer avec votre maçon pour une collaboration sereine.
 
 **Vous cherchez un maçon de confiance ?** [Demandez votre devis gratuit](/contact) et jugez par vous-même notre sérieux.`,
-    author: "Maçonnerie [Nom]",
+    author: "Maçonnerie Durand",
     date: "2026-01-15",
     category: "Conseils",
     image: "/images/blog/choisir-macon.jpg",
@@ -144,7 +144,7 @@ Si la surface totale de votre maison après extension dépasse **150 m²**, le r
 Avant tout projet d'extension, consultez le PLU de votre commune et rapprochez-vous du service urbanisme de votre mairie. Nous pouvons également vous accompagner dans ces démarches.
 
 **Vous avez un projet d'extension ?** [Contactez-nous](/contact) pour une étude de faisabilité gratuite.`,
-    author: "Maçonnerie [Nom]",
+    author: "Maçonnerie Durand",
     date: "2025-12-20",
     category: "Réglementation",
     image: "/images/blog/extension-permis.jpg",

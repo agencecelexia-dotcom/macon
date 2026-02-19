@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { CTABanner } from "@/components/sections/CTABanner";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { company } from "@/lib/data/company";
 import {
   Shield,
@@ -69,19 +70,19 @@ const certifications = [
 
 const teamMembers = [
   {
-    name: "[Prénom Nom]",
+    name: "Philippe Durand",
     role: "Fondateur & Gérant",
     description:
       "Plus de 20 ans d'expérience dans la maçonnerie. Passionné par son métier et le travail bien fait.",
   },
   {
-    name: "[Prénom Nom]",
+    name: "Sébastien Morel",
     role: "Chef de Chantier",
     description:
       "Spécialiste de la construction neuve et des fondations. Encadre les équipes sur le terrain.",
   },
   {
-    name: "[Prénom Nom]",
+    name: "Julien Perrin",
     role: "Maçon Qualifié",
     description:
       "Expert en rénovation et travaux de pierre. Maîtrise les techniques traditionnelles et modernes.",
@@ -92,12 +93,22 @@ export default function AProposPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-br from-primary-800 to-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-800 to-primary-700" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(230,126,34,0.12),transparent_60%)]" />
+        <div className="absolute inset-0 grain overflow-hidden" />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-5 tracking-tight">
             À propos de {company.name}
           </h1>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto font-light leading-relaxed">
             Une entreprise de maçonnerie fondée sur l&apos;excellence, la
             proximité et la confiance depuis {company.yearFounded}.
           </p>
@@ -106,8 +117,8 @@ export default function AProposPage() {
 
       {/* Company Story */}
       <SectionWrapper>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <ScrollReveal direction="left">
             <SectionTitle
               title="Notre histoire"
               subtitle="Une passion transmise de génération en génération."
@@ -136,90 +147,98 @@ export default function AProposPage() {
                 bouche-à-oreille. Nous en sommes fiers.
               </p>
             </div>
-          </div>
+          </ScrollReveal>
           {/* Image placeholder */}
-          <div className="aspect-[4/3] bg-neutral-100 rounded-xl flex items-center justify-center text-neutral-400 text-sm border border-neutral-200">
-            <div className="text-center">
-              <Hammer size={48} className="mx-auto mb-3 text-neutral-300" />
-              <p>Photo de l&apos;équipe / du chantier</p>
+          <ScrollReveal direction="right" delay={0.15}>
+            <div className="aspect-[4/3] bg-neutral-50 rounded-2xl flex items-center justify-center text-neutral-400 text-sm border border-neutral-100 shadow-premium">
+              <div className="text-center">
+                <Hammer size={48} className="mx-auto mb-3 text-neutral-300" />
+                <p>Photo de l&apos;équipe / du chantier</p>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </SectionWrapper>
 
       {/* Values */}
       <SectionWrapper background="neutral">
-        <SectionTitle
-          title="Nos valeurs"
-          subtitle="Les principes qui guident chacune de nos interventions."
-        />
+        <ScrollReveal>
+          <SectionTitle
+            title="Nos valeurs"
+            subtitle="Les principes qui guident chacune de nos interventions."
+          />
+        </ScrollReveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {values.map((value) => (
-            <div
-              key={value.title}
-              className="bg-white rounded-xl p-6 text-center shadow-sm border border-neutral-200 hover:shadow-md transition-shadow"
-            >
-              <div className="w-14 h-14 rounded-full bg-accent/10 text-accent flex items-center justify-center mx-auto mb-4">
-                <value.icon size={28} />
+          {values.map((value, i) => (
+            <ScrollReveal key={value.title} delay={i * 0.08}>
+              <div className="bg-white rounded-2xl p-6 text-center shadow-premium border border-neutral-100 hover:shadow-premium-lg hover:-translate-y-1 transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 text-accent flex items-center justify-center mx-auto mb-4 border border-accent/10">
+                  <value.icon size={24} />
+                </div>
+                <h3 className="font-bold text-primary text-lg mb-2 tracking-tight">
+                  {value.title}
+                </h3>
+                <p className="text-sm text-neutral-500 leading-relaxed">
+                  {value.description}
+                </p>
               </div>
-              <h3 className="font-bold text-primary text-lg mb-2">
-                {value.title}
-              </h3>
-              <p className="text-sm text-neutral-500 leading-relaxed">
-                {value.description}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </SectionWrapper>
 
       {/* Team */}
       <SectionWrapper>
-        <SectionTitle
-          title="Notre équipe"
-          subtitle="Des professionnels passionnés à votre service."
-        />
+        <ScrollReveal>
+          <SectionTitle
+            title="Notre équipe"
+            subtitle="Des professionnels passionnés à votre service."
+          />
+        </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {teamMembers.map((member) => (
-            <div key={member.name} className="text-center">
-              {/* Photo placeholder */}
-              <div className="w-32 h-32 rounded-full bg-neutral-100 border-4 border-primary/10 mx-auto mb-4 flex items-center justify-center text-neutral-400">
-                <Users size={40} />
+          {teamMembers.map((member, i) => (
+            <ScrollReveal key={member.name} delay={i * 0.1}>
+              <div className="text-center">
+                {/* Photo placeholder */}
+                <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200 border-2 border-primary/5 mx-auto mb-5 flex items-center justify-center text-primary-300 shadow-premium">
+                  <Users size={36} />
+                </div>
+                <h3 className="font-bold text-primary text-lg tracking-tight">{member.name}</h3>
+                <p className="text-accent font-semibold text-sm mb-2">
+                  {member.role}
+                </p>
+                <p className="text-sm text-neutral-500 max-w-xs mx-auto leading-relaxed">
+                  {member.description}
+                </p>
               </div>
-              <h3 className="font-bold text-primary text-lg">{member.name}</h3>
-              <p className="text-accent font-medium text-sm mb-2">
-                {member.role}
-              </p>
-              <p className="text-sm text-neutral-500 max-w-xs mx-auto">
-                {member.description}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </SectionWrapper>
 
       {/* Certifications */}
       <SectionWrapper background="neutral">
-        <SectionTitle
-          title="Nos certifications"
-          subtitle="Des qualifications reconnues pour votre tranquillité d'esprit."
-        />
+        <ScrollReveal>
+          <SectionTitle
+            title="Nos certifications"
+            subtitle="Des qualifications reconnues pour votre tranquillité d'esprit."
+          />
+        </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {certifications.map((cert) => (
-            <div
-              key={cert.title}
-              className="bg-white rounded-xl p-8 text-center shadow-sm border border-neutral-200"
-            >
-              <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-                <cert.icon size={32} />
+          {certifications.map((cert, i) => (
+            <ScrollReveal key={cert.title} delay={i * 0.1}>
+              <div className="bg-white rounded-2xl p-8 text-center shadow-premium border border-neutral-100 hover:shadow-premium-lg transition-shadow duration-300">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 text-primary flex items-center justify-center mx-auto mb-4 border border-primary/10">
+                  <cert.icon size={28} />
+                </div>
+                <h3 className="font-bold text-primary text-lg mb-2 tracking-tight">
+                  {cert.title}
+                </h3>
+                <p className="text-sm text-neutral-500 leading-relaxed">
+                  {cert.description}
+                </p>
               </div>
-              <h3 className="font-bold text-primary text-lg mb-2">
-                {cert.title}
-              </h3>
-              <p className="text-sm text-neutral-500 leading-relaxed">
-                {cert.description}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </SectionWrapper>

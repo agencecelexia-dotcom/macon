@@ -8,17 +8,17 @@ import { ClickToCall } from "@/components/ui/ClickToCall";
 import { JsonLdScript } from "@/components/seo/JsonLdScript";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.example.com"),
+  metadataBase: new URL("https://www.maconnerie-durand.fr"),
   title: {
-    default: "Maçonnerie [Nom] | Construction & Rénovation à [Ville]",
-    template: "%s | Maçonnerie [Nom]",
+    default: "Maçonnerie Durand | Construction & Rénovation à Lyon",
+    template: "%s | Maçonnerie Durand",
   },
   description:
-    "Entreprise de maçonnerie à [Ville] et environs. Construction neuve, rénovation, extension. Devis gratuit sous 48h. Garantie décennale.",
+    "Entreprise de maçonnerie à Lyon et environs. Construction neuve, rénovation, extension. Devis gratuit sous 48h. Garantie décennale.",
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    siteName: "Maçonnerie [Nom]",
+    siteName: "Maçonnerie Durand",
   },
 };
 

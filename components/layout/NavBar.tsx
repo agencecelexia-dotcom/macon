@@ -31,9 +31,9 @@ export function NavBar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled || !isHome
-          ? "bg-white shadow-md"
+          ? "glass border-b border-neutral-200/50 shadow-premium"
           : "bg-transparent"
       )}
     >
@@ -43,7 +43,7 @@ export function NavBar() {
           <Link
             href="/"
             className={cn(
-              "font-heading font-bold text-xl md:text-2xl transition-colors",
+              "font-heading font-extrabold text-xl md:text-2xl transition-colors duration-300 tracking-tight",
               isScrolled || !isHome ? "text-primary" : "text-white"
             )}
           >
@@ -51,18 +51,20 @@ export function NavBar() {
           </Link>
 
           {/* Desktop navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-accent",
+                  "relative text-sm font-medium transition-all duration-300 px-4 py-2 rounded-lg",
                   pathname === link.href
-                    ? "text-accent"
+                    ? isScrolled || !isHome
+                      ? "text-accent bg-accent/5"
+                      : "text-accent"
                     : isScrolled || !isHome
-                      ? "text-primary"
-                      : "text-white"
+                      ? "text-primary-600 hover:text-primary hover:bg-neutral-100"
+                      : "text-white/80 hover:text-white hover:bg-white/10"
                 )}
               >
                 {link.label}
@@ -75,14 +77,16 @@ export function NavBar() {
             <a
               href={`tel:${company.phoneRaw}`}
               className={cn(
-                "flex items-center gap-2 text-sm font-medium transition-colors hover:text-accent",
-                isScrolled || !isHome ? "text-primary" : "text-white"
+                "flex items-center gap-2 text-sm font-medium transition-colors duration-300",
+                isScrolled || !isHome
+                  ? "text-primary-600 hover:text-accent"
+                  : "text-white/80 hover:text-white"
               )}
             >
-              <Phone size={16} />
+              <Phone size={15} />
               {company.phone}
             </a>
-            <Button href="/contact" variant="accent" size="sm">
+            <Button href="/contact" variant="accent" size="sm" className="shadow-accent-glow">
               Devis gratuit
             </Button>
           </div>
@@ -91,8 +95,10 @@ export function NavBar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={cn(
-              "lg:hidden p-2 transition-colors cursor-pointer",
-              isScrolled || !isHome ? "text-primary" : "text-white"
+              "lg:hidden p-2 rounded-lg transition-all duration-300 cursor-pointer",
+              isScrolled || !isHome
+                ? "text-primary hover:bg-neutral-100"
+                : "text-white hover:bg-white/10"
             )}
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
@@ -103,31 +109,34 @@ export function NavBar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-t border-neutral-200">
-          <div className="px-4 py-6 space-y-4">
+        <div className="lg:hidden glass border-t border-neutral-200/50">
+          <div className="px-4 py-6 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "block text-base font-medium transition-colors",
-                  pathname === link.href ? "text-accent" : "text-primary"
+                  "block text-base font-medium transition-colors rounded-lg px-4 py-3",
+                  pathname === link.href
+                    ? "text-accent bg-accent/5"
+                    : "text-primary hover:bg-neutral-100"
                 )}
               >
                 {link.label}
               </Link>
             ))}
-            <hr className="border-neutral-200" />
-            <a
-              href={`tel:${company.phoneRaw}`}
-              className="flex items-center gap-2 text-primary font-medium"
-            >
-              <Phone size={18} />
-              {company.phone}
-            </a>
-            <Button href="/contact" variant="accent" size="md" className="w-full">
-              Demander un devis gratuit
-            </Button>
+            <div className="pt-4 border-t border-neutral-200/50 mt-4 space-y-3">
+              <a
+                href={`tel:${company.phoneRaw}`}
+                className="flex items-center gap-2 text-primary font-medium px-4"
+              >
+                <Phone size={18} />
+                {company.phone}
+              </a>
+              <Button href="/contact" variant="accent" size="md" className="w-full shadow-accent-glow">
+                Demander un devis gratuit
+              </Button>
+            </div>
           </div>
         </div>
       )}

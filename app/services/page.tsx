@@ -3,6 +3,7 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { CTABanner } from "@/components/sections/CTABanner";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { services } from "@/lib/data/services";
 
 export const metadata: Metadata = {
@@ -15,12 +16,22 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-br from-primary-800 to-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-800 to-primary-700" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(230,126,34,0.12),transparent_60%)]" />
+        <div className="absolute inset-0 grain overflow-hidden" />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-5 tracking-tight">
             Nos services de maçonnerie
           </h1>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto font-light leading-relaxed">
             De la construction neuve à la rénovation en passant par l&apos;extension,
             nous réalisons tous vos projets de maçonnerie avec expertise.
           </p>
@@ -29,13 +40,17 @@ export default function ServicesPage() {
 
       {/* Services Grid */}
       <SectionWrapper>
-        <SectionTitle
-          title="Nos prestations"
-          subtitle="Chaque projet est unique. Nous adaptons nos interventions à vos besoins spécifiques."
-        />
+        <ScrollReveal>
+          <SectionTitle
+            title="Nos prestations"
+            subtitle="Chaque projet est unique. Nous adaptons nos interventions à vos besoins spécifiques."
+          />
+        </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+          {services.map((service, i) => (
+            <ScrollReveal key={service.id} delay={i * 0.1}>
+              <ServiceCard service={service} />
+            </ScrollReveal>
           ))}
         </div>
       </SectionWrapper>
