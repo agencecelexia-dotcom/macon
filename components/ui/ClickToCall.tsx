@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
 import { company } from "@/lib/data/company";
 
 export function ClickToCall() {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,8 @@ export function ClickToCall() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (pathname.startsWith("/admin")) return null;
 
   return (
     <a

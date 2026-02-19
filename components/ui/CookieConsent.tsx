@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const consent = document.cookie
@@ -14,6 +16,8 @@ export function CookieConsent() {
       setIsVisible(true);
     }
   }, []);
+
+  if (pathname.startsWith("/admin")) return null;
 
   const handleConsent = (value: "accepted" | "rejected") => {
     setIsVisible(false);

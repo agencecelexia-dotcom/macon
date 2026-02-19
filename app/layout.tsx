@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { ClickToCall } from "@/components/ui/ClickToCall";
 import { JsonLdScript } from "@/components/seo/JsonLdScript";
+import { AnalyticsTracker } from "@/components/features/AnalyticsTracker";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.maconnerie-durand.fr"),
@@ -36,6 +37,7 @@ export default function RootLayout({
         <Footer />
         <ClickToCall />
         <CookieConsent />
+        <AnalyticsTracker />
       </body>
     </html>
   );

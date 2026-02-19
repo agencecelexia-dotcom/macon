@@ -61,7 +61,7 @@ export function CTABanner({
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <Button href="/contact" variant="accent" size="lg" className="shadow-accent-glow">
+          <Button href="/contact" variant="accent" size="lg" className="shadow-accent-glow" data-track="cta-devis">
             Demander un devis gratuit
             <ArrowRight size={18} className="ml-2" />
           </Button>
@@ -70,6 +70,7 @@ export function CTABanner({
             variant="outline"
             size="lg"
             className="border-white/20 text-white hover:bg-white/10 hover:border-white/40"
+            data-track="cta-appel"
           >
             <Phone size={18} className="mr-2" />
             {company.phone}

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { quoteFormSchema } from "@/lib/schemas/quote-form";
+import { saveSubmission } from "@/lib/storage";
 
 export async function POST(request: Request) {
   try {
@@ -20,8 +21,9 @@ export async function POST(request: Request) {
       );
     }
 
-    // Données validées disponibles dans result.data
-    // Connectez votre service d'envoi ici (email, CRM, webhook...)
+    const { consent, ...data } = result.data;
+    void consent;
+    saveSubmission(data);
 
     return NextResponse.json({ success: true });
   } catch {

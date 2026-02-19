@@ -89,7 +89,7 @@ export function HeroSection({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <Button href="/contact" variant="accent" size="lg" className="shadow-accent-glow">
+          <Button href="/contact" variant="accent" size="lg" className="shadow-accent-glow" data-track="hero-devis">
             Demander un devis gratuit
           </Button>
           <Button
@@ -97,6 +97,7 @@ export function HeroSection({
             variant="outline"
             size="lg"
             className="border-white/30 text-white hover:bg-white/10 hover:border-white/50"
+            data-track="hero-appel"
           >
             <Phone size={20} className="mr-2" />
             Appelez-nous

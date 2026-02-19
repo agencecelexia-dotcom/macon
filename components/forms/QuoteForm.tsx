@@ -15,6 +15,7 @@ import { StepProjectDetails } from "./StepProjectDetails";
 import { StepContactInfo } from "./StepContactInfo";
 import { Button } from "@/components/ui/Button";
 import { ArrowLeft, ArrowRight, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { track } from "@/components/features/AnalyticsTracker";
 
 const TOTAL_STEPS = 3;
 
@@ -67,6 +68,7 @@ export function QuoteForm() {
   const handleNext = async () => {
     const isValid = await validateCurrentStep();
     if (isValid) {
+      if (currentStep === 0) track("form_start");
       setCurrentStep((prev) => Math.min(prev + 1, TOTAL_STEPS - 1));
     }
   };
@@ -91,6 +93,7 @@ export function QuoteForm() {
       }
 
       setSubmitStatus("success");
+      track("form_submit");
     } catch {
       setSubmitStatus("error");
     } finally {

@@ -164,3 +164,17 @@ h1, h2, h3, h4, h5, h6 {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* === ADMIN PAGE — hide site chrome === */
+body.admin-page > header,
+body.admin-page > footer {
+  display: none !important;
+}
+
+body.admin-page > main {
+  padding: 0;
+}
+
+body.admin-page {
+  font-size: 16px;
+}
