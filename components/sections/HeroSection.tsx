@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Phone, Star, ChevronDown } from "lucide-react";
 import { company } from "@/lib/data/company";
@@ -42,23 +41,20 @@ export function HeroSection({
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white pt-20">
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+        <div
+          className="opacity-0"
+          style={{ animation: "hero-in 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards" }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm text-white/90 mb-8 backdrop-blur-sm">
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
             {company.yearsExperience}+ ans d&apos;expérience à Lyon et environs
           </span>
-        </motion.div>
+        </div>
 
         {/* Title */}
-        <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        <h1
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight opacity-0"
+          style={{ animation: "hero-in 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards" }}
         >
           {title.split("Lyon").map((part, i, arr) =>
             i < arr.length - 1 ? (
@@ -70,24 +66,20 @@ export function HeroSection({
               <span key={i}>{part}</span>
             )
           )}
-        </motion.h1>
+        </h1>
 
         {/* Subtitle */}
-        <motion.p
-          className="text-lg sm:text-xl md:text-2xl text-white/70 mb-12 max-w-2xl mx-auto font-light"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+        <p
+          className="text-lg sm:text-xl md:text-2xl text-white/70 mb-12 max-w-2xl mx-auto font-light opacity-0"
+          style={{ animation: "hero-in 0.6s cubic-bezier(0.16,1,0.3,1) 0.4s forwards" }}
         >
           {subtitle}
-        </motion.p>
+        </p>
 
         {/* CTAs */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+        <div
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-16 opacity-0"
+          style={{ animation: "hero-in 0.6s cubic-bezier(0.16,1,0.3,1) 0.5s forwards" }}
         >
           <Button href="/contact" variant="accent" size="lg" className="shadow-accent-glow" data-track="hero-devis">
             Demander un devis gratuit
@@ -102,15 +94,13 @@ export function HeroSection({
             <Phone size={20} className="mr-2" />
             Appelez-nous
           </Button>
-        </motion.div>
+        </div>
 
         {/* Trust badges */}
         {showBadges && (
-          <motion.div
-            className="flex flex-wrap justify-center gap-4 md:gap-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+          <div
+            className="flex flex-wrap justify-center gap-4 md:gap-8 opacity-0"
+            style={{ animation: "hero-in 0.6s cubic-bezier(0.16,1,0.3,1) 0.7s forwards" }}
           >
             {[
               { label: "Assurance décennale" },
@@ -129,24 +119,19 @@ export function HeroSection({
                 {badge.label}
               </span>
             ))}
-          </motion.div>
+          </div>
         )}
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 opacity-0"
+        style={{ animation: "fade-in 0.6s ease 1.2s forwards" }}
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        >
+        <div style={{ animation: "bounce-down 2s ease-in-out infinite" }}>
           <ChevronDown size={24} className="text-white/30" />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

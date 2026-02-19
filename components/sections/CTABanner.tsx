@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Phone, ArrowRight } from "lucide-react";
 import { company } from "@/lib/data/company";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 interface CTABannerProps {
   title?: string;
@@ -39,12 +39,7 @@ export function CTABanner({
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <ScrollReveal>
           <div className="divider-accent mx-auto mb-8" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-5 tracking-tight">
             {title}
@@ -52,30 +47,26 @@ export function CTABanner({
           <p className="text-lg md:text-xl text-white/60 mb-12 max-w-xl mx-auto font-light leading-relaxed">
             {subtitle}
           </p>
-        </motion.div>
+        </ScrollReveal>
 
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Button href="/contact" variant="accent" size="lg" className="shadow-accent-glow" data-track="cta-devis">
-            Demander un devis gratuit
-            <ArrowRight size={18} className="ml-2" />
-          </Button>
-          <Button
-            href={`tel:${company.phoneRaw}`}
-            variant="outline"
-            size="lg"
-            className="border-white/20 text-white hover:bg-white/10 hover:border-white/40"
-            data-track="cta-appel"
-          >
-            <Phone size={18} className="mr-2" />
-            {company.phone}
-          </Button>
-        </motion.div>
+        <ScrollReveal delay={0.2}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="/contact" variant="accent" size="lg" className="shadow-accent-glow" data-track="cta-devis">
+              Demander un devis gratuit
+              <ArrowRight size={18} className="ml-2" />
+            </Button>
+            <Button
+              href={`tel:${company.phoneRaw}`}
+              variant="outline"
+              size="lg"
+              className="border-white/20 text-white hover:bg-white/10 hover:border-white/40"
+              data-track="cta-appel"
+            >
+              <Phone size={18} className="mr-2" />
+              {company.phone}
+            </Button>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

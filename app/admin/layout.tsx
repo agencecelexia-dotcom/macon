@@ -1,18 +1,14 @@
-"use client";
-
-import { useEffect } from "react";
+import { AdminBodyClass } from "./AdminBodyClass";
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    document.body.classList.add("admin-page");
-    return () => {
-      document.body.classList.remove("admin-page");
-    };
-  }, []);
-
-  return <>{children}</>;
+  return (
+    <>
+      <AdminBodyClass />
+      {children}
+    </>
+  );
 }
