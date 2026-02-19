@@ -6,7 +6,11 @@
       "Bash(bun:*)",
       "Bash(git config:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npm install:*)",
+      "Bash(npm info:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

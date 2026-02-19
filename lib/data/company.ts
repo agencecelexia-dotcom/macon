@@ -1,0 +1,37 @@
+export const company = {
+  name: "Maçonnerie [Nom]",
+  slogan: "Votre maçon de confiance",
+  phone: "06 00 00 00 00",
+  phoneRaw: "+33600000000",
+  email: "contact@example.com",
+  address: {
+    street: "123 Rue Example",
+    city: "[Ville]",
+    postalCode: "75000",
+    region: "Île-de-France",
+    country: "FR",
+  },
+  coordinates: {
+    lat: 48.85661,
+    lng: 2.35222,
+  },
+  hours: "Lun-Ven : 8h-18h | Sam : 9h-12h",
+  hoursStructured: [
+    { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "18:00" },
+    { days: ["Saturday"], opens: "09:00", closes: "12:00" },
+  ],
+  certifications: ["Garantie Décennale", "RGE", "Qualibat"],
+  insurance: "Assurance décennale et responsabilité civile professionnelle",
+  yearFounded: 2010,
+  yearsExperience: new Date().getFullYear() - 2010,
+  projectsCompleted: 200,
+  clientsSatisfied: 180,
+  googleRating: 4.8,
+  googleReviewCount: 47,
+  socialMedia: {
+    facebook: "",
+    instagram: "",
+    google: "",
+  },
+  interventionRadius: "30-50 km",
+} as const;
