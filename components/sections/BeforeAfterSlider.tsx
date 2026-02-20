@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import Image from "next/image";
 import { MoveHorizontal } from "lucide-react";
 
 interface BeforeAfterSliderProps {
@@ -57,20 +58,16 @@ export function BeforeAfterSlider({
       onPointerUp={handlePointerUp}
     >
       {/* After image (background) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-200 to-primary-300">
-        <div className="absolute inset-0 flex items-center justify-center text-primary-400 text-sm">
-          {afterAlt}
-        </div>
+      <div className="absolute inset-0">
+        <Image src={afterImage} alt={afterAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
       </div>
 
       {/* Before image (clipped) */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-neutral-300 to-neutral-400"
+        className="absolute inset-0"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <div className="absolute inset-0 flex items-center justify-center text-neutral-600 text-sm">
-          {beforeAlt}
-        </div>
+        <Image src={beforeImage} alt={beforeAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
       </div>
 
       {/* Slider line */}

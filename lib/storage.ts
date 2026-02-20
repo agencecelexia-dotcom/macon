@@ -29,32 +29,44 @@ export interface AnalyticsEvent {
 
 // --------------- Paths ---------------
 
-const STORAGE_DIR = process.env.VERCEL
+// On Vercel: write to /tmp (writable), read from /tmp or fall back to repo's storage/ (seed data)
+const WRITE_DIR = process.env.VERCEL
   ? join("/tmp", "storage")
   : join(process.cwd(), "storage");
-const SUBMISSIONS_FILE = join(STORAGE_DIR, "submissions.json");
-const ANALYTICS_FILE = join(STORAGE_DIR, "analytics.json");
+const SEED_DIR = join(process.cwd(), "storage");
+
+const SUBMISSIONS_WRITE = join(WRITE_DIR, "submissions.json");
+const ANALYTICS_WRITE = join(WRITE_DIR, "analytics.json");
+const SUBMISSIONS_SEED = join(SEED_DIR, "submissions.json");
+const ANALYTICS_SEED = join(SEED_DIR, "analytics.json");
 
 function ensureDir() {
   try {
-    if (!existsSync(STORAGE_DIR)) {
-      mkdirSync(STORAGE_DIR, { recursive: true });
+    if (!existsSync(WRITE_DIR)) {
+      mkdirSync(WRITE_DIR, { recursive: true });
     }
   } catch {
-    // Read-only filesystem (Vercel) — ignore, reads will return []
+    // Read-only filesystem — ignore
   }
+}
+
+function readJson<T>(writePath: string, seedPath: string): T[] {
+  // Try write location first (has live data on local or from previous Vercel writes)
+  if (existsSync(writePath)) {
+    try { return JSON.parse(readFileSync(writePath, "utf-8")); } catch { /* fall through */ }
+  }
+  // Fall back to seed file committed to repo
+  if (existsSync(seedPath)) {
+    try { return JSON.parse(readFileSync(seedPath, "utf-8")); } catch { /* fall through */ }
+  }
+  return [];
 }
 
 // --------------- Submissions ---------------
 
 export function readSubmissions(): Submission[] {
   ensureDir();
-  if (!existsSync(SUBMISSIONS_FILE)) return [];
-  try {
-    return JSON.parse(readFileSync(SUBMISSIONS_FILE, "utf-8"));
-  } catch {
-    return [];
-  }
+  return readJson<Submission>(SUBMISSIONS_WRITE, SUBMISSIONS_SEED);
 }
 
 export function saveSubmission(
@@ -70,7 +82,7 @@ export function saveSubmission(
   };
   submissions.unshift(submission);
   try {
-    writeFileSync(SUBMISSIONS_FILE, JSON.stringify(submissions, null, 2));
+    writeFileSync(SUBMISSIONS_WRITE, JSON.stringify(submissions, null, 2));
   } catch {
     // Read-only filesystem — data won't persist
   }
@@ -83,7 +95,7 @@ export function markSubmissionRead(id: string): boolean {
   if (!sub) return false;
   sub.read = true;
   try {
-    writeFileSync(SUBMISSIONS_FILE, JSON.stringify(submissions, null, 2));
+    writeFileSync(SUBMISSIONS_WRITE, JSON.stringify(submissions, null, 2));
   } catch {
     return false;
   }
@@ -96,7 +108,7 @@ export function deleteSubmission(id: string): boolean {
   if (idx === -1) return false;
   submissions.splice(idx, 1);
   try {
-    writeFileSync(SUBMISSIONS_FILE, JSON.stringify(submissions, null, 2));
+    writeFileSync(SUBMISSIONS_WRITE, JSON.stringify(submissions, null, 2));
   } catch {
     return false;
   }
@@ -109,12 +121,7 @@ const MAX_EVENTS = 10_000;
 
 export function readAnalytics(): AnalyticsEvent[] {
   ensureDir();
-  if (!existsSync(ANALYTICS_FILE)) return [];
-  try {
-    return JSON.parse(readFileSync(ANALYTICS_FILE, "utf-8"));
-  } catch {
-    return [];
-  }
+  return readJson<AnalyticsEvent>(ANALYTICS_WRITE, ANALYTICS_SEED);
 }
 
 export function saveEvent(
@@ -133,7 +140,7 @@ export function saveEvent(
     events.splice(0, events.length - MAX_EVENTS);
   }
   try {
-    writeFileSync(ANALYTICS_FILE, JSON.stringify(events, null, 2));
+    writeFileSync(ANALYTICS_WRITE, JSON.stringify(events, null, 2));
   } catch {
     // Read-only filesystem — event won't persist
   }
